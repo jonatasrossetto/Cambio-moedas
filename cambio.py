@@ -18,6 +18,7 @@ if response.status_code==200: #código de resposta dizendo que o site está de p
     print("agora estou buscando informações das moedas ...")
     dados=response.json() #desempacotar os dados em json na resposta da API
     day=dados['date']
+    day=day[8:10]+"/"+day[5:7]+"/"+day[0:4]
     #print(day)
     #print("%s / %s / %s" % (day[8:10],day[5:7],day[0:4])) 
     dados1=response._content #aparentemente content não estrutura os dados
@@ -43,7 +44,9 @@ if response.status_code==200: #código de resposta dizendo que o site está de p
 
     #Cria um frame, tabela/dicionário, com valores da conversão para exportar
     #como arquivo .csv para abrir em outros softwares, com o excel por exemplo
-    df=pd.DataFrame({'Moedas': ['Euro', 'Dollar','Bitcoin'],'Valores':[euro_brl,dolar_brl,bitcoin_brl]})
+    
+    #df=pd.DataFrame({'Moedas': ['Euro', 'Dollar','Bitcoin'],'Valores':[euro_brl,dolar_brl,bitcoin_brl]})
+    df=pd.DataFrame({'Data':[day,day,day], 'Moedas': ['Euro', 'Dollar','Bitcoin'],'Valores':[euro_brl,dolar_brl,bitcoin_brl]})
     df.to_csv("valores.csv", index=False, sep=";", decimal=",")
     print(df)
     

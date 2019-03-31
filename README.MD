@@ -14,7 +14,7 @@ pip install pandas
 ```
 
 ### Arquivo gerado
-![Aplicação](print1.png)
+![Aplicação](print2.png)
 
 ### Desenvolvedor
 

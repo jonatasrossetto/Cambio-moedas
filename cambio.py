@@ -14,7 +14,10 @@ response=requests.get(url)
 if response.status_code==200: #código de resposta dizendo que o site está de pé!!!
     print("Hei, consegui acessar a base de dados!!!")
     print("agora estou buscando informações das moedas ...")
-    dados=response.json()
+    dados=response.json() #desempacotar os dados em json na resposta da API
+    day=dados['date']
+    print(day)
+    print("%s / %s / %s" % (day[8:10],day[5:7],day[0:4])) 
     dados1=response._content #aparentemente content não estrutura os dados
     print(dados['rates']['EUR'])
     print(dados['rates']['BRL'])
